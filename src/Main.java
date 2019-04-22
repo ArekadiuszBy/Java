@@ -1,54 +1,47 @@
-class Pracownik
-        {
-            private int id;
-            private String imie;
-            private String nazwisko;
-            private int zarobek;
-
-            public Pracownik(int id, String imie, String nazwisko, int zarobek) {
-                this.id = id;
-                this.imie=imie;
-                this.nazwisko=nazwisko;
-                this.zarobek=zarobek;
-            }
-            String getImie(){return imie;}
-            String getNazwisko(){return nazwisko;}
-            int getId(){return id;}
-            int getZarobek(){return zarobek;}
-        }
-
-class Lekarz extends Pracownik {
-
-    private int staż;
-
-    public Lekarz(int id, String imie, String nazwisko, int zarobek) {
-        super(id, imie, nazwisko, zarobek);
-        staż = 5;
-    }
-    public int getstaż(){return staż;}
-    public void setstaż(int n){
-        staż+=n;
-    }
+class Kalkulator {
+	
+	public int dodaj(int a, int b) {
+		return a + b;
+	}
+	
+	public int odejmij(int a, int b) {
+		return a - b;
+	}
 }
 
+class KalkulatorStatystyczny extends Kalkulator {
+	
+	public double sinus(int stopien) {
+		double radian = stopien * 3.14159 / 180;
+		return Math.sin(radian);
+	}
+	
+}
 
 public class Main {
-    public static void main(String[] args)
-    {
 
-        Pracownik pracownik = new Pracownik(1,"arek","waw",5000 );
-        System.out.println( pracownik.getId());
-        System.out.println(pracownik.getImie());
-        System.out.println(pracownik.getNazwisko());
-        System.out.println(pracownik.getZarobek());
+	public static void main(String[] args) {
+		
+		Kalkulator kalkulatorPodstawowy = new Kalkulator();
+		
+		System.out.println( kalkulatorPodstawowy.dodaj(10, 20));
+		System.out.println( kalkulatorPodstawowy.odejmij(10, 20));
+		
+		System.out.println();
+		
+		KalkulatorStatystyczny kalkulatorStatystyczny = new KalkulatorStatystyczny();
+		
+		System.out.println( kalkulatorStatystyczny.dodaj(10, 20));
+		System.out.println( kalkulatorStatystyczny.odejmij(10, 20));
+		System.out.println( kalkulatorStatystyczny.sinus(90) );
+		
+		
+		Kalkulator kalkulatorStatystycznyNowy = new KalkulatorStatystyczny();
+		
+		System.out.println( kalkulatorStatystycznyNowy.dodaj(10, 20));
+		System.out.println( kalkulatorStatystycznyNowy.odejmij(10, 20));
 
-        System.out.println(); System.out.println("KLASA LEKARZ"); System.out.println();
+		System.out.println( ((KalkulatorStatystyczny)kalkulatorStatystycznyNowy).sinus(90));
+	}
 
-        Lekarz lekarz = new Lekarz(2, "Monika", "Ż.", 2000);
-        System.out.println(lekarz.getstaż());
-        System.out.println(lekarz.getImie());
-
-
-
-    }
 }
