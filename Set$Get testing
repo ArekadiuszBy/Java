@@ -1,0 +1,39 @@
+class Arek
+{
+   public int age, height, weight;
+
+    public int age(int age){
+        this.age=age;
+        return age;
+    }
+
+        int hheight = 1;
+
+
+        public int setAge (int age){
+            this.age = age;
+            return age;
+        }
+
+        public int getHeight () {
+            return hheight;
+        }
+         int getWeight () {
+             weight = 64;
+             return weight;
+        }
+
+}
+
+
+public class Main {
+    public static void main(String[] args)
+    {
+
+Arek arek = new Arek();
+
+System.out.println(arek.setAge(5));
+        System.out.println(arek.getHeight());
+        System.out.println(arek.getWeight());
+    }
+}
